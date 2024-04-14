@@ -1,3 +1,5 @@
-altair
-pandas
+matplotlib
+networkx
 streamlit
+streamlit_agraph
+zhipuai
