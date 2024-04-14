@@ -8,7 +8,7 @@ import streamlit as st
 from streamlit.delta_generator import DeltaGenerator
 import os
 #import openai
-import graphviz
+#import graphviz
 from dataclasses import dataclass, asdict, is_dataclass
 from textwrap import dedent
 from streamlit_agraph import agraph, Node, Edge, Config
@@ -595,16 +595,7 @@ class MindMap:
             nx.draw(graph, pos=pos, node_color=colors, with_labels=True)
             st.pyplot(fig)
         else: # graph_type == "graphviz":
-            graph = graphviz.Graph()
-            graph.attr(rankdir='LR')
-            for a, b in self.edges:
-                graph.edge(a, b, dir="both")
-            for n in self.nodes:
-                graph.node(n, style="filled", fillcolor=FOCUS_COLOR if n == selected else COLOR)
-            #st.graphviz_chart(graph, use_container_width=True)
-            b64 = base64.b64encode(graph.pipe(format='svg')).decode("utf-8")
-            html = f"<img style='width: 100%' src='data:image/svg+xml;base64,{b64}'/>"
-            st.write(html, unsafe_allow_html=True)
+            print("graphviz")
         # sort alphabetically
         for node in sorted(self.nodes):
             self._add_expand_delete_buttons(node)
